@@ -57,6 +57,7 @@
 #endif
     [[FBRoute POST:@"/wda/pressButton"] respondWithTarget:self action:@selector(handlePressButtonCommand:)],
     [[FBRoute POST:@"/wda/performIoHidEvent"] respondWithTarget:self action:@selector(handlePeformIOHIDEvent:)],
+    [[FBRoute POST:@"/wda/performIoHidEvent"].withoutSession respondWithTarget:self action:@selector(handlePeformIOHIDEvent:)],
     [[FBRoute POST:@"/wda/expectNotification"] respondWithTarget:self action:@selector(handleExpectNotification:)],
     [[FBRoute POST:@"/wda/siri/activate"] respondWithTarget:self action:@selector(handleActivateSiri:)],
     [[FBRoute POST:@"/wda/apps/launchUnattached"].withoutSession respondWithTarget:self action:@selector(handleLaunchUnattachedApp:)],
@@ -68,7 +69,9 @@
     [[FBRoute GET:@"/wda/device/location"].withoutSession respondWithTarget:self action:@selector(handleGetLocation:)],
     [[FBRoute OPTIONS:@"/*"].withoutSession respondWithTarget:self action:@selector(handlePingCommand:)],
     [[FBRoute POST:@"/wda/tap"] respondWithTarget:self action:@selector(handleDeviceTap:)],
-    [[FBRoute POST:@"/wda/tap"].withoutSession respondWithTarget:self action:@selector(handleDeviceTap:)],
+    //[[FBRoute POST:@"/wda/tap"].withoutSession respondWithTarget:self action:@selector(handleDeviceTap:)],
+    [[FBRoute POST:@"/wda/performIoHidEvent"].withoutSession respondWithTarget:self action:@selector(handlePeformIOHIDEvent:)],
+
   ];
 }
 
@@ -267,6 +270,7 @@
 {
   NSNumber *page = request.arguments[@"page"];
   NSNumber *usage = request.arguments[@"usage"];
+  NSNumber *value = request.arguments[@"value"];
   NSNumber *duration = request.arguments[@"duration"];
   NSError *error;
   if (![XCUIDevice.sharedDevice fb_performIOHIDEventWithPage:page.unsignedIntValue

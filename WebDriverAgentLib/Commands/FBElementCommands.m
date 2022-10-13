@@ -96,6 +96,8 @@
     [[FBRoute POST:@"/wda/forceTouch"] respondWithTarget:self action:@selector(handleForceTouch:)],
 #endif
     [[FBRoute POST:@"/wda/keys"] respondWithTarget:self action:@selector(handleKeys:)],
+    [[FBRoute POST:@"/wda/keyA"] respondWithTarget:self action:@selector(handleKey:)],
+    [[FBRoute POST:@"/wda/keyAT"] respondWithTarget:self action:@selector(handleKeyViaTemp:)],
   ];
 }
 
@@ -698,6 +700,34 @@ static const CGFloat DEFAULT_OFFSET = (CGFloat)0.2;
   return [[XCUICoordinate alloc] initWithCoordinate:appCoordinate
                                        pointsOffset:CGVectorMake(coordinate.x, coordinate.y)];
 }
+  
++ (id<FBResponsePayload>)handleKey:(FBRouteRequest *)request
+   {
+     XCUIApplication *application = request.session.activeApplication;
+
+     NSString *keyToType = request.arguments[@"key"];
+
+     [application typeText: keyToType];
+     //FBElementCache *elementCache = request.session.elementCache;
+     //XCUIElement *element = [elementCache elementForUUID:(NSString *)request.parameters[@"uuid"]];
+     //[element typeKey:keyToType modifierFlags:XCUIKeyModifierShift];
+
+     return FBResponseWithOK();
+   }
+
+   + (id<FBResponsePayload>)handleKeyViaTemp:(FBRouteRequest *)request
+   {
+     XCUIApplication *application = request.session.tempApplication;
+
+     NSString *keyToType = request.arguments[@"key"];
+
+     [application typeText: keyToType];
+     //FBElementCache *elementCache = request.session.elementCache;
+     //XCUIElement *element = [elementCache elementForUUID:(NSString *)request.parameters[@"uuid"]];
+     //[element typeKey:keyToType modifierFlags:XCUIKeyModifierShift];
+
+     return FBResponseWithOK();
+   }
 #endif
 
 @end

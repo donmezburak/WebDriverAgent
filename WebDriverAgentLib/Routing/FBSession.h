@@ -39,6 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /*! Keeps cached visibility values for the current snapshots tree */
 @property (nonatomic, readonly) NSMutableDictionary<NSNumber *, NSMutableDictionary<NSString *, NSNumber *> *> *elementsVisibilityCache;
+@property (nonatomic) FBApplication *tempApplication;
 
 + (nullable instancetype)activeSession;
 
