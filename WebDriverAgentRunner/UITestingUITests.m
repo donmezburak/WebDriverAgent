@@ -12,10 +12,10 @@
 #import <WebDriverAgentLib/FBDebugLogDelegateDecorator.h>
 #import <WebDriverAgentLib/FBConfiguration.h>
 #import <WebDriverAgentLib/FBFailureProofTestCase.h>
-#import <WebDriverAgentLib/FBWebServer.h>
 #import <WebDriverAgentLib/XCTestCase.h>
+#import "../WebDriverAgentLib/Routing/NNGServer.h"
 
-@interface UITestingUITests : FBFailureProofTestCase <FBWebServerDelegate>
+@interface UITestingUITests : FBFailureProofTestCase
 @end
 
 @implementation UITestingUITests
@@ -39,16 +39,8 @@
  */
 - (void)testRunner
 {
-  FBWebServer *webServer = [[FBWebServer alloc] init];
-  webServer.delegate = self;
-  [webServer startNng];
-}
-
-#pragma mark - FBWebServerDelegate
-
-- (void)webServerDidRequestShutdown:(FBWebServer *)webServer
-{
-  [webServer stopNng];
+  NngThread *nngThreadInst = [[NngThread alloc] init:8101];
+  [nngThreadInst entry:self];
 }
 
 @end

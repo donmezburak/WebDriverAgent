@@ -9,7 +9,6 @@
 
 #import "FBXCElementSnapshotWrapper+Helpers.h"
 
-#import "FBFindElementCommands.h"
 #import "FBRunLoopSpinner.h"
 #import "FBLogger.h"
 #import "FBXCElementSnapshot.h"
