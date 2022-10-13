@@ -23,6 +23,11 @@
 #import "FBXCodeCompatibility.h"
 #import "XCUIDevice.h"
 
+#import "XCPointerEventPath.h"
+#import "XCSynthesizedEventRecord.h"
+#import "FBXCTestDaemonsProxy.h"
+#import "XCTRunnerDaemonSession.h"
+
 static const NSTimeInterval FBHomeButtonCoolOffTime = 1.;
 static const NSTimeInterval FBScreenLockTimeout = 5.;
 
@@ -334,6 +339,25 @@ static bool fb_isLocked;
   return [self respondsToSelector:@selector(appearanceMode)]
   ? [NSNumber numberWithLongLong:[self appearanceMode]]
   : nil;
+}
+
+- (BOOL)fb_synthTapWithX:(CGFloat)x
+  y:(CGFloat) y
+{
+  CGPoint point = CGPointMake(x,y);
+
+  CGFloat TapDuration = 0.05;
+
+  XCPointerEventPath *pointerEventPath = [[XCPointerEventPath alloc] initForTouchAtPoint:point offset:0];
+  [pointerEventPath liftUpAtOffset:TapDuration];
+
+  XCSynthesizedEventRecord *eventRecord = [[XCSynthesizedEventRecord alloc] initWithName:nil interfaceOrientation:0];
+  [eventRecord addPointerEventPath:pointerEventPath];
+
+  [[self eventSynthesizer]
+    synthesizeEvent:eventRecord
+    completion:(id)^(BOOL result, NSError *invokeError) {} ];
+  return YES;
 }
 
 @end

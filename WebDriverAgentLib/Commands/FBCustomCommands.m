@@ -67,6 +67,8 @@
     [[FBRoute GET:@"/wda/device/location"] respondWithTarget:self action:@selector(handleGetLocation:)],
     [[FBRoute GET:@"/wda/device/location"].withoutSession respondWithTarget:self action:@selector(handleGetLocation:)],
     [[FBRoute OPTIONS:@"/*"].withoutSession respondWithTarget:self action:@selector(handlePingCommand:)],
+    [[FBRoute POST:@"/wda/tap"] respondWithTarget:self action:@selector(handleDeviceTap:)],
+    [[FBRoute POST:@"/wda/tap"].withoutSession respondWithTarget:self action:@selector(handleDeviceTap:)],
   ];
 }
 
@@ -489,5 +491,16 @@
 
   return [localTimeZone name];
 }
+
++ (id <FBResponsePayload>)handleDeviceTap:(FBRouteRequest *)request
+ {
+   CGFloat x = [request.arguments[@"x"] doubleValue];
+   CGFloat y = [request.arguments[@"y"] doubleValue];
+   [XCUIDevice.sharedDevice
+     fb_synthTapWithX:x
+     y:y];
+
+   return FBResponseWithOK();
+ }
 
 @end
