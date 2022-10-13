@@ -137,7 +137,7 @@ static id FBAXClient = nil;
    CGPoint point = CGPointMake(x,y);
    //FBAXClient = [XCAXClient_iOS sharedClient];
    //XCUIRemoteAccessibilityInterface *remote = [FBAXClient remoteAccessibilityInterface];
-   return [FBAXClient elementAtPoint:point error:(id *)&err];
+   return [FBAXClient accessibilityElementForElementAtPoint:point error:&err];
  }
 
 @end
