@@ -224,4 +224,12 @@ static FBSession *_activeSession = nil;
   return [[FBApplication alloc] initWithBundleIdentifier:bundleIdentifier].fb_state;
 }
 
+- (void)setApplication:(FBApplication *)application
+{
+  NSMutableDictionary *apps = [NSMutableDictionary dictionary];
+  [apps setObject:application forKey:application.bundleID];
+  self.applications = apps.copy;
+  self.testedApplicationBundleId = application.bundleID;
+}
+
 @end

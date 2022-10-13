@@ -41,14 +41,14 @@
 {
   FBWebServer *webServer = [[FBWebServer alloc] init];
   webServer.delegate = self;
-  [webServer startServing];
+  [webServer startNng];
 }
 
 #pragma mark - FBWebServerDelegate
 
 - (void)webServerDidRequestShutdown:(FBWebServer *)webServer
 {
-  [webServer stopServing];
+  [webServer stopNng];
 }
 
 @end

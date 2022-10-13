@@ -30,6 +30,7 @@
 #import "XCUIElement+FBIsVisible.h"
 #import "XCUIElementQuery.h"
 #import "FBUnattachedAppLauncher.h"
+#import "XCUIDevice+CFHelpers.h"
 
 @implementation FBCustomCommands
 
@@ -272,7 +273,7 @@
 {
   NSNumber *page = request.arguments[@"page"];
   NSNumber *usage = request.arguments[@"usage"];
-  NSNumber *value = request.arguments[@"value"];
+  //NSNumber *value = request.arguments[@"value"];
   NSNumber *duration = request.arguments[@"duration"];
   NSError *error;
   if (![XCUIDevice.sharedDevice fb_performIOHIDEventWithPage:page.unsignedIntValue
@@ -503,7 +504,7 @@
   CGFloat x = [request.arguments[@"x"] doubleValue];
   CGFloat y = [request.arguments[@"y"] doubleValue];
   [XCUIDevice.sharedDevice
-   fb_synthTapWithX:x
+   cf_tap:x
    y:y];
   
   return FBResponseWithOK();
@@ -517,7 +518,7 @@
   CGFloat y2 = [request.arguments[@"y2"] doubleValue];
   CGFloat delay = [request.arguments[@"delay"] doubleValue];
   [XCUIDevice.sharedDevice
-   fb_synthSwipe:x1
+   cf_swipe:x1
    y1:y1 x2:x2 y2:y2 delay:delay];
   
   return FBResponseWithOK();

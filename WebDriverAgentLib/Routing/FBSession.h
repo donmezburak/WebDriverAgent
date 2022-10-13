@@ -119,6 +119,7 @@ NS_ASSUME_NONNULL_BEGIN
          for more details on possible enum values
  */
 - (NSUInteger)applicationStateWithBundleId:(NSString *)bundleIdentifier;
+- (void)setApplication:(FBApplication *)application;
 
 @end
 

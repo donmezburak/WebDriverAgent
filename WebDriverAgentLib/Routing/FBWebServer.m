@@ -8,6 +8,7 @@
  */
 
 #import "FBWebServer.h"
+#import "NNGServer.h"
 
 #import "RoutingConnection.h"
 #import "RoutingHTTPServer.h"
@@ -79,6 +80,18 @@ static NSString *const FBServerURLEndMarker = @"<-ServerURLHere";
   while (self.keepAlive &&
          [runLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]]);
 }
+
+- (void)startNng
+ {
+   _nngThreadInst = [[NngThread alloc] init:8101];
+   //[NSThread detachNewThreadSelector:@selector(entry:) toTarget:_nngThreadInst withObject:nil];
+   [_nngThreadInst entry:self];
+ }
+
+ - (void)stopNng
+ {
+
+ }
 
 - (void)startHTTPServer
 {
