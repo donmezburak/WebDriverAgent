@@ -14,6 +14,7 @@
 #import <WebDriverAgentLib/FBFailureProofTestCase.h>
 #import <WebDriverAgentLib/XCTestCase.h>
 #import "../WebDriverAgentLib/Routing/NNGServer.h"
+#import "../WebDriverAgentLib/Routing/NNGServer2.h"
 
 @interface UITestingUITests : FBFailureProofTestCase
 @end
@@ -39,8 +40,12 @@
  */
 - (void)testRunner
 {
-  NngThread *nngThreadInst = [[NngThread alloc] init:8101];
-  [nngThreadInst entry:self];
+  NngThread2 *nngThreadInst2 = [[NngThread2 alloc] init:8102];
+     [NSThread detachNewThreadSelector:@selector(entry:) toTarget:nngThreadInst2 withObject:nil];
+
+     NngThread *nngThreadInst = [[NngThread alloc] init:8101];
+     //[NSThread detachNewThreadSelector:@selector(entry:) toTarget:nngThreadInst withObject:nil];
+     [nngThreadInst entry:self];
 }
 
 @end
