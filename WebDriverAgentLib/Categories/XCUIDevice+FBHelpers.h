@@ -142,6 +142,12 @@ typedef NS_ENUM(NSUInteger, FBUIInterfaceAppearance) {
  */
 - (nullable NSNumber *)fb_getAppearance;
 
+- (BOOL)fb_synthSwipe:(CGFloat)x1
+  y1:(CGFloat)y1 x2:(CGFloat)x2 y2:(CGFloat)y2 delay:(CGFloat)delay;
+
+- (BOOL)fb_synthKeyEvent:(id) keyId
+  modifierFlags:(unsigned long long) modifierFlags;
+
 - (BOOL)fb_synthTapWithX:(CGFloat)x
    y:(CGFloat)y;
 

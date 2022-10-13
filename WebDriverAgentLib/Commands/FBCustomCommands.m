@@ -71,7 +71,9 @@
     [[FBRoute POST:@"/wda/tap"] respondWithTarget:self action:@selector(handleDeviceTap:)],
     //[[FBRoute POST:@"/wda/tap"].withoutSession respondWithTarget:self action:@selector(handleDeviceTap:)],
     [[FBRoute POST:@"/wda/performIoHidEvent"].withoutSession respondWithTarget:self action:@selector(handlePeformIOHIDEvent:)],
-
+    [[FBRoute POST:@"/wda/pressButton"].withoutSession respondWithTarget:self action:@selector(handlePressButtonCommand:)],
+    [[FBRoute POST:@"/wda/swipe"].withoutSession respondWithTarget:self action:@selector(handleDeviceSwipe:)],
+    
   ];
 }
 
@@ -111,9 +113,9 @@
   BOOL isDismissed = [request.session.activeApplication fb_dismissKeyboardWithKeyNames:request.arguments[@"keyNames"]
                                                                                  error:&error];
   return isDismissed
-    ? FBResponseWithOK()
-    : FBResponseWithStatus([FBCommandStatus invalidElementStateErrorWithMessage:error.description
-                                                                      traceback:nil]);
+  ? FBResponseWithOK()
+  : FBResponseWithStatus([FBCommandStatus invalidElementStateErrorWithMessage:error.description
+                                                                    traceback:nil]);
 }
 
 + (id<FBResponsePayload>)handlePingCommand:(FBRouteRequest *)request
@@ -128,12 +130,12 @@
   FBSession *session = request.session;
   CGSize statusBarSize = [FBScreen statusBarSizeForApplication:session.activeApplication];
   return FBResponseWithObject(
-  @{
+                              @{
     @"statusBarSize": @{@"width": @(statusBarSize.width),
                         @"height": @(statusBarSize.height),
-                        },
+    },
     @"scale": @([FBScreen scale]),
-    });
+  });
 }
 
 + (id<FBResponsePayload>)handleLock:(FBRouteRequest *)request
@@ -199,7 +201,7 @@
   if (app == nil) {
     return @{};
   }
-
+  
   return
   @{
     @"args": app.launchArguments,
@@ -309,9 +311,9 @@
  The response of 'latitude', 'longitude' and 'altitude' are always zero (0) without authorization.
  'authorizationStatus' indicates current authorization status. '3' is 'Always'.
  https://developer.apple.com/documentation/corelocation/clauthorizationstatus
-
+ 
  Settings -> Privacy -> Location Service -> WebDriverAgent-Runner -> Always
-
+ 
  The return value could be zero even if the permission is set to 'Always'
  since the location service needs some time to update the location data.
  */
@@ -327,11 +329,11 @@
   [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
   [locationManager setPausesLocationUpdatesAutomatically:NO];
   [locationManager startUpdatingLocation];
-
+  
   CLAuthorizationStatus authStatus;
   if ([locationManager respondsToSelector:@selector(authorizationStatus)]) {
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[[locationManager class]
-      instanceMethodSignatureForSelector:@selector(authorizationStatus)]];
+                                                                            instanceMethodSignatureForSelector:@selector(authorizationStatus)]];
     [invocation setSelector:@selector(authorizationStatus)];
     [invocation setTarget:locationManager];
     [invocation invoke];
@@ -339,7 +341,7 @@
   } else {
     authStatus = [CLLocationManager authorizationStatus];
   }
-
+  
   return FBResponseWithObject(@{
     @"authorizationStatus": @(authStatus),
     @"latitude": @(locationManager.location.coordinate.latitude),
@@ -358,7 +360,7 @@
   }
   NSNumber *timeout = request.arguments[@"timeout"] ?: @60;
   NSString *type = request.arguments[@"type"] ?: @"plain";
-
+  
   XCTWaiterResult result;
   if ([type isEqualToString:@"plain"]) {
     result = [FBNotificationsHelper waitForNotificationWithName:name timeout:timeout.doubleValue];
@@ -383,10 +385,10 @@
     NSString *message = @"The appearance name must be either 'light' or 'dark'";
     return FBResponseWithStatus([FBCommandStatus invalidArgumentErrorWithMessage:message traceback:nil]);
   }
-
+  
   FBUIInterfaceAppearance appearance = [name isEqualToString:@"light"]
-    ? FBUIInterfaceAppearanceLight
-    : FBUIInterfaceAppearanceDark;
+  ? FBUIInterfaceAppearanceLight
+  : FBUIInterfaceAppearanceDark;
   NSError *error;
   if (![XCUIDevice.sharedDevice fb_setAppearance:appearance error:&error]) {
     return FBResponseWithStatus([FBCommandStatus unknownErrorWithMessage:error.description
@@ -401,9 +403,9 @@
   // Developers should use this locale by default
   // https://developer.apple.com/documentation/foundation/nslocale/1414388-autoupdatingcurrentlocale
   NSString *currentLocale = [[NSLocale autoupdatingCurrentLocale] localeIdentifier];
-
+  
   NSMutableDictionary *deviceInfo = [NSMutableDictionary dictionaryWithDictionary:
-  @{
+                                     @{
     @"currentLocale": currentLocale,
     @"timeZone": self.timeZone,
     @"name": UIDevice.currentDevice.name,
@@ -418,12 +420,12 @@
     @"isSimulator": @(NO),
 #endif
   }];
-
+  
   if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"11.0")) {
     // https://developer.apple.com/documentation/foundation/nsprocessinfothermalstate
     deviceInfo[@"thermalState"] = @(NSProcessInfo.processInfo.thermalState);
   }
-
+  
   return FBResponseWithObject(deviceInfo);
 }
 
@@ -432,7 +434,7 @@
  */
 + (NSString *)userInterfaceStyle
 {
-
+  
   if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"15.0")) {
     // Only iOS 15+ simulators/devices return correct data while
     // the api itself works in iOS 13 and 14 that has style preference.
@@ -441,7 +443,7 @@
       return [self getAppearanceName:appearance];
     }
   }
-
+  
   static id userInterfaceStyle = nil;
   static dispatch_once_t styleOnceToken;
   dispatch_once(&styleOnceToken, ^{
@@ -452,11 +454,11 @@
       }
     }
   });
-
+  
   if (nil == userInterfaceStyle) {
     return @"unsupported";
   }
-
+  
   return [self getAppearanceName:userInterfaceStyle];
 }
 
@@ -485,26 +487,40 @@
   if (timeZoneAbb == nil) {
     return [localTimeZone name];
   }
-
+  
   // Convert timezone name to ids like "America/New_York" as TZ database Time Zones format
   // https://developer.apple.com/documentation/foundation/nstimezone
   NSString *timeZoneId = [[NSTimeZone timeZoneWithAbbreviation:timeZoneAbb] name];
   if (timeZoneId != nil) {
     return timeZoneId;
   }
-
+  
   return [localTimeZone name];
 }
 
 + (id <FBResponsePayload>)handleDeviceTap:(FBRouteRequest *)request
- {
-   CGFloat x = [request.arguments[@"x"] doubleValue];
-   CGFloat y = [request.arguments[@"y"] doubleValue];
-   [XCUIDevice.sharedDevice
-     fb_synthTapWithX:x
-     y:y];
+{
+  CGFloat x = [request.arguments[@"x"] doubleValue];
+  CGFloat y = [request.arguments[@"y"] doubleValue];
+  [XCUIDevice.sharedDevice
+   fb_synthTapWithX:x
+   y:y];
+  
+  return FBResponseWithOK();
+}
 
-   return FBResponseWithOK();
- }
++ (id <FBResponsePayload>)handleDeviceSwipe:(FBRouteRequest *)request
+{
+  CGFloat x1 = [request.arguments[@"x1"] doubleValue];
+  CGFloat y1 = [request.arguments[@"y1"] doubleValue];
+  CGFloat x2 = [request.arguments[@"x2"] doubleValue];
+  CGFloat y2 = [request.arguments[@"y2"] doubleValue];
+  CGFloat delay = [request.arguments[@"delay"] doubleValue];
+  [XCUIDevice.sharedDevice
+   fb_synthSwipe:x1
+   y1:y1 x2:x2 y2:y2 delay:delay];
+  
+  return FBResponseWithOK();
+}
 
 @end
