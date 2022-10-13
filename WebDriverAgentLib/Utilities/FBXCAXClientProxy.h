@@ -43,6 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
                             attributes:(NSArray *)attributes;
 
 - (XCUIApplication *)monitoredApplicationWithProcessIdentifier:(int)pid;
+- (XCUIElement *)elementAtPoint:(int)x y:(int)y;
 
 @end
 

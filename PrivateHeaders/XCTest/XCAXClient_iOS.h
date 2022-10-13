@@ -8,6 +8,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 @class NSMutableDictionary;
+@protocol XCUIRemoteAccessibilityInterface;
 
 @interface XCAXClient_iOS : NSObject
 {

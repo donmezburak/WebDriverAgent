@@ -131,4 +131,13 @@ static id FBAXClient = nil;
   return [[FBAXClient applicationProcessTracker] monitoredApplicationWithProcessIdentifier:pid];
 }
 
+- (XCUIElement *)elementAtPoint:(int)x y:(int)y
+ {
+   NSError *err = nil;
+   CGPoint point = CGPointMake(x,y);
+   //FBAXClient = [XCAXClient_iOS sharedClient];
+   //XCUIRemoteAccessibilityInterface *remote = [FBAXClient remoteAccessibilityInterface];
+   return [FBAXClient elementAtPoint:point error:(id *)&err];
+ }
+
 @end
