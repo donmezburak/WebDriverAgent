@@ -19,9 +19,9 @@
 #import "FBMacros.h"
 #import "FBMathUtils.h"
 #import "FBScreenshot.h"
-#import "FBXCDeviceEvent.h"
 #import "FBXCodeCompatibility.h"
 #import "XCUIDevice.h"
+#import "FBXCDeviceEvent.h"
 
 #import "XCPointerEventPath.h"
 
@@ -32,15 +32,10 @@ static const NSTimeInterval FBScreenLockTimeout = 5.;
 
 static bool fb_isLocked;
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wobjc-load-method"
-
 + (void)load
 {
   [self fb_registerAppforDetectLockState];
 }
-
-#pragma clang diagnostic pop
 
 + (void)fb_registerAppforDetectLockState
 {
@@ -183,13 +178,12 @@ static bool fb_isLocked;
              withDescription:@"Siri service is not available on the device under test"]
             buildError:error];
   }
-  SEL selector = NSSelectorFromString(@"activateWithVoiceRecognitionText:");
-  NSMethodSignature *signature = [siriService methodSignatureForSelector:selector];
-  NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
-  [invocation setSelector:selector];
-  [invocation setArgument:&text atIndex:2];
   @try {
-    [invocation invokeWithTarget:siriService];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    [siriService performSelector:NSSelectorFromString(@"activateWithVoiceRecognitionText:")
+                      withObject:text];
+#pragma clang diagnostic pop
     return YES;
   } @catch (NSException *e) {
     return [[[FBErrorBuilder builder]
@@ -198,13 +192,9 @@ static bool fb_isLocked;
   }
 }
 
-- (BOOL)fb_pressButton:(NSString *)buttonName
-           forDuration:(nullable NSNumber *)duration
-                 error:(NSError **)error
+#if TARGET_OS_TV
+- (BOOL)fb_pressButton:(NSString *)buttonName error:(NSError **)error
 {
-#if !TARGET_OS_TV
-  return [self fb_pressButton:buttonName error:error];
-#else
   NSMutableArray<NSString *> *supportedButtonNames = [NSMutableArray array];
   NSInteger remoteButton = -1; // no remote button
   if ([buttonName.lowercaseString isEqualToString:@"home"]) {
@@ -261,22 +251,12 @@ static bool fb_isLocked;
              withDescriptionFormat:@"The button '%@' is unknown. Only the following button names are supported: %@", buttonName, supportedButtonNames]
             buildError:error];
   }
-
-  if (duration) {
-    // https://developer.apple.com/documentation/xctest/xcuiremote/1627475-pressbutton
-    [[XCUIRemote sharedRemote] pressButton:remoteButton forDuration:duration.doubleValue];
-  } else {
-    // https://developer.apple.com/documentation/xctest/xcuiremote/1627476-pressbutton
-    [[XCUIRemote sharedRemote] pressButton:remoteButton];
-  }
-
+  [[XCUIRemote sharedRemote] pressButton:remoteButton];
   return YES;
-#endif
 }
+#else
 
-#if !TARGET_OS_TV
-- (BOOL)fb_pressButton:(NSString *)buttonName
-                 error:(NSError **)error
+- (BOOL)fb_pressButton:(NSString *)buttonName error:(NSError **)error
 {
   NSMutableArray<NSString *> *supportedButtonNames = [NSMutableArray array];
   XCUIDeviceButton dstButton = 0;
@@ -307,35 +287,17 @@ static bool fb_isLocked;
 
 - (BOOL)fb_performIOHIDEventWithPage:(unsigned int)page
                                usage:(unsigned int)usage
+                               //type:(unsigned int)type
                             duration:(NSTimeInterval)duration
                                error:(NSError **)error
 {
-  id<FBXCDeviceEvent> event = FBCreateXCDeviceEvent(page, usage, duration, error);
-  return nil == event ? NO : [self performDeviceEvent:event error:error];
-}
-
-- (BOOL)fb_setAppearance:(FBUIInterfaceAppearance)appearance error:(NSError **)error
-{
-  SEL selector = NSSelectorFromString(@"setAppearanceMode:");
-  if (nil != selector && [self respondsToSelector:selector]) {
-    NSMethodSignature *signature = [self methodSignatureForSelector:selector];
-    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
-    [invocation setSelector:selector];
-    [invocation setTarget:self];
-    [invocation setArgument:&appearance atIndex:2];
-    [invocation invoke];
-    return YES;
-  }
-  return [[[FBErrorBuilder builder]
-           withDescriptionFormat:@"Current Xcode SDK does not support appearance changing"]
-          buildError:error];
-}
-
-- (NSNumber *)fb_getAppearance
-{
-  return [self respondsToSelector:@selector(appearanceMode)]
-  ? [NSNumber numberWithLongLong:[self appearanceMode]]
-  : nil;
+  //ROBOTQA
+ /* FBXCDeviceEvent *event = [FBXCDeviceEvent deviceEventWithPage:page
+                                                      usage:usage
+                                                   duration:duration];
+  //event.type = type;
+  return [self performDeviceEvent:event error:error]; */
+  return nil;
 }
 
 @end

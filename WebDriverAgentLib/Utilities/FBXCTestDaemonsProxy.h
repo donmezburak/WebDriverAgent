@@ -9,6 +9,7 @@
 
 #import <XCTest/XCTest.h>
 #import "XCSynthesizedEventRecord.h"
+#import "XCElementSnapshot.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

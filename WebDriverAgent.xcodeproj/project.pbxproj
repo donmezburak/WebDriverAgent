@@ -17,9 +17,7 @@
 		13DE7A44287C2A8D003243C6 /* FBXCAccessibilityElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 13DE7A41287C2A8D003243C6 /* FBXCAccessibilityElement.h */; };
 		13DE7A45287C2A8D003243C6 /* FBXCAccessibilityElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 13DE7A42287C2A8D003243C6 /* FBXCAccessibilityElement.m */; };
 		13DE7A46287C2A8D003243C6 /* FBXCAccessibilityElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 13DE7A42287C2A8D003243C6 /* FBXCAccessibilityElement.m */; };
-		13DE7A49287C4005003243C6 /* FBXCDeviceEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 13DE7A47287C4005003243C6 /* FBXCDeviceEvent.h */; };
 		13DE7A4A287C4005003243C6 /* FBXCDeviceEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 13DE7A47287C4005003243C6 /* FBXCDeviceEvent.h */; };
-		13DE7A4B287C4005003243C6 /* FBXCDeviceEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 13DE7A48287C4005003243C6 /* FBXCDeviceEvent.m */; };
 		13DE7A4C287C4005003243C6 /* FBXCDeviceEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 13DE7A48287C4005003243C6 /* FBXCDeviceEvent.m */; };
 		13DE7A4F287C46BB003243C6 /* FBXCElementSnapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 13DE7A4D287C46BB003243C6 /* FBXCElementSnapshot.h */; };
 		13DE7A50287C46BB003243C6 /* FBXCElementSnapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 13DE7A4D287C46BB003243C6 /* FBXCElementSnapshot.h */; };
@@ -52,6 +50,18 @@
 		1C9931A628F87E6700A4FC83 /* test in Resources */ = {isa = PBXBuildFile; fileRef = 1C9931A228F87E6700A4FC83 /* test */; };
 		1C9931A828F87E7100A4FC83 /* libnng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C9931A728F87E7100A4FC83 /* libnng.a */; };
 		1C9931A928F87E7100A4FC83 /* libnng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C9931A728F87E7100A4FC83 /* libnng.a */; };
+		1C9931AE28F8AAAB00A4FC83 /* XCElementSnapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C9931AD28F8AAAB00A4FC83 /* XCElementSnapshot.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1C9931AF28F8AAAB00A4FC83 /* XCElementSnapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C9931AD28F8AAAB00A4FC83 /* XCElementSnapshot.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1C9931B428F8AB9200A4FC83 /* XCElementSnapshot-XCUIElementSnapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C9931B328F8AB9200A4FC83 /* XCElementSnapshot-XCUIElementSnapshot.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1C9931B528F8AB9200A4FC83 /* XCElementSnapshot-XCUIElementSnapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C9931B328F8AB9200A4FC83 /* XCElementSnapshot-XCUIElementSnapshot.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1C9931C928F8C7BD00A4FC83 /* string-tree.c in Sources */ = {isa = PBXBuildFile; fileRef = 1C9931C628F8C7BD00A4FC83 /* string-tree.c */; };
+		1C9931CA28F8C7BD00A4FC83 /* string-tree.c in Sources */ = {isa = PBXBuildFile; fileRef = 1C9931C628F8C7BD00A4FC83 /* string-tree.c */; };
+		1C9931CB28F8C7BD00A4FC83 /* ujsonin.c in Sources */ = {isa = PBXBuildFile; fileRef = 1C9931C728F8C7BD00A4FC83 /* ujsonin.c */; };
+		1C9931CC28F8C7BD00A4FC83 /* ujsonin.c in Sources */ = {isa = PBXBuildFile; fileRef = 1C9931C728F8C7BD00A4FC83 /* ujsonin.c */; };
+		1C9931CD28F8C7BD00A4FC83 /* red_black_tree.c in Sources */ = {isa = PBXBuildFile; fileRef = 1C9931C828F8C7BD00A4FC83 /* red_black_tree.c */; };
+		1C9931CE28F8C7BD00A4FC83 /* red_black_tree.c in Sources */ = {isa = PBXBuildFile; fileRef = 1C9931C828F8C7BD00A4FC83 /* red_black_tree.c */; };
+		1C9931D028F9C48400A4FC83 /* XCAccessibilityElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C9931CF28F9C48400A4FC83 /* XCAccessibilityElement.h */; };
+		1C9931D128F9C48400A4FC83 /* XCAccessibilityElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C9931CF28F9C48400A4FC83 /* XCAccessibilityElement.h */; };
 		315A15012518CB8700A3A064 /* TouchableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 315A15002518CB8700A3A064 /* TouchableView.m */; };
 		315A15072518CC2800A3A064 /* TouchSpotView.m in Sources */ = {isa = PBXBuildFile; fileRef = 315A15062518CC2800A3A064 /* TouchSpotView.m */; };
 		315A150A2518D6F400A3A064 /* TouchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 315A15092518D6F400A3A064 /* TouchViewController.m */; };
@@ -790,6 +800,12 @@
 		1C9931A128F87E6700A4FC83 /* ujsonin */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ujsonin; sourceTree = "<group>"; };
 		1C9931A228F87E6700A4FC83 /* test */ = {isa = PBXFileReference; lastKnownFileType = folder; path = test; sourceTree = "<group>"; };
 		1C9931A728F87E7100A4FC83 /* libnng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libnng.a; sourceTree = "<group>"; };
+		1C9931AD28F8AAAB00A4FC83 /* XCElementSnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCElementSnapshot.h; sourceTree = "<group>"; };
+		1C9931B328F8AB9200A4FC83 /* XCElementSnapshot-XCUIElementSnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCElementSnapshot-XCUIElementSnapshot.h"; sourceTree = "<group>"; };
+		1C9931C628F8C7BD00A4FC83 /* string-tree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "string-tree.c"; path = "ujsonin/string-tree.c"; sourceTree = SOURCE_ROOT; };
+		1C9931C728F8C7BD00A4FC83 /* ujsonin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ujsonin.c; path = ujsonin/ujsonin.c; sourceTree = SOURCE_ROOT; };
+		1C9931C828F8C7BD00A4FC83 /* red_black_tree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = red_black_tree.c; path = ujsonin/red_black_tree.c; sourceTree = SOURCE_ROOT; };
+		1C9931CF28F9C48400A4FC83 /* XCAccessibilityElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XCAccessibilityElement.h; sourceTree = "<group>"; };
 		315A14FF2518CB8700A3A064 /* TouchableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchableView.h; sourceTree = "<group>"; };
 		315A15002518CB8700A3A064 /* TouchableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchableView.m; sourceTree = "<group>"; };
 		315A15052518CC2800A3A064 /* TouchSpotView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchSpotView.h; sourceTree = "<group>"; };
@@ -1789,6 +1805,9 @@
 		EEC288F81BF0ED2500B4DC79 /* WebDriverAgentLib */ = {
 			isa = PBXGroup;
 			children = (
+				1C9931C828F8C7BD00A4FC83 /* red_black_tree.c */,
+				1C9931C628F8C7BD00A4FC83 /* string-tree.c */,
+				1C9931C728F8C7BD00A4FC83 /* ujsonin.c */,
 				E444DC4A24912EC40060D7EB /* Vendor */,
 				EE9AB73E1CAEDF0C008C271F /* Categories */,
 				EE9AB74F1CAEDF0C008C271F /* Commands */,
@@ -1914,6 +1933,9 @@
 				1BA7DD8C206D694B007C7C26 /* XCTElementSetTransformer-Protocol.h */,
 				7119097B2152580600BA3C7E /* XCUIScreen.h */,
 				711CD03325ED1106001C01D2 /* XCUIScreenDataSource-Protocol.h */,
+				1C9931AD28F8AAAB00A4FC83 /* XCElementSnapshot.h */,
+				1C9931B328F8AB9200A4FC83 /* XCElementSnapshot-XCUIElementSnapshot.h */,
+				1C9931CF28F9C48400A4FC83 /* XCAccessibilityElement.h */,
 			);
 			path = XCTest;
 			sourceTree = "<group>";
@@ -1956,6 +1978,7 @@
 				716C9DFB27315D21005AD475 /* FBReflectionUtils.h in Headers */,
 				641EE6372240C5CA00173FCB /* XCSourceCodeTreeNode.h in Headers */,
 				641EE6382240C5CA00173FCB /* XCPointerEventPath.h in Headers */,
+				1C9931D128F9C48400A4FC83 /* XCAccessibilityElement.h in Headers */,
 				648C10AC22AAAD9C00B81B9A /* UIKeyboardImpl.h in Headers */,
 				71F3E7D525417FF400E0C22B /* FBSettings.h in Headers */,
 				641EE63A2240C5CA00173FCB /* XCTest.h in Headers */,
@@ -2102,9 +2125,11 @@
 				641EE6CD2240C5CA00173FCB /* XCUIElementAsynchronousHandlerWrapper.h in Headers */,
 				641EE6CE2240C5CA00173FCB /* XCTestLog.h in Headers */,
 				C845206222D5E79400EA68CB /* FBUnattachedAppLauncher.h in Headers */,
+				1C9931B528F8AB9200A4FC83 /* XCElementSnapshot-XCUIElementSnapshot.h in Headers */,
 				641EE6CF2240C5CA00173FCB /* UITapGestureRecognizer-RecordingAdditions.h in Headers */,
 				641EE6D02240C5CA00173FCB /* XCDebugLogDelegate-Protocol.h in Headers */,
 				641EE6D12240C5CA00173FCB /* NSString-XCTAdditions.h in Headers */,
+				1C9931AF28F8AAAB00A4FC83 /* XCElementSnapshot.h in Headers */,
 				641EE6D22240C5CA00173FCB /* XCTestWaiter.h in Headers */,
 				641EE6D32240C5CA00173FCB /* FBImageUtils.h in Headers */,
 				641EE6D42240C5CA00173FCB /* NSValue-XCTestAdditions.h in Headers */,
@@ -2201,6 +2226,7 @@
 				641EE7052240CDCF00173FCB /* XCUIElement+FBTVFocuse.h in Headers */,
 				71A224E51DE2F56600844D55 /* NSPredicate+FBFormat.h in Headers */,
 				EE35AD1F1E3B77D600A02D78 /* UILongPressGestureRecognizer-RecordingAdditions.h in Headers */,
+				1C9931B428F8AB9200A4FC83 /* XCElementSnapshot-XCUIElementSnapshot.h in Headers */,
 				EE35AD411E3B77D600A02D78 /* XCTestCase.h in Headers */,
 				EE35AD391E3B77D600A02D78 /* XCSymbolicatorHolder.h in Headers */,
 				EE35AD6B1E3B77D600A02D78 /* XCUIApplicationImpl.h in Headers */,
@@ -2212,7 +2238,6 @@
 				EE35AD4F1E3B77D600A02D78 /* XCTestManager_TestsInterface-Protocol.h in Headers */,
 				719CD8FC2126C88B00C7D0C2 /* XCUIApplication+FBAlert.h in Headers */,
 				EE18883A1DA661C400307AA8 /* FBMathUtils.h in Headers */,
-				13DE7A49287C4005003243C6 /* FBXCDeviceEvent.h in Headers */,
 				EE35AD221E3B77D600A02D78 /* UISwipeGestureRecognizer-RecordingAdditions.h in Headers */,
 				713C6DCF1DDC772A00285B92 /* FBElementUtils.h in Headers */,
 				EE35AD561E3B77D600A02D78 /* XCTestSuite.h in Headers */,
@@ -2254,6 +2279,7 @@
 				EE35AD511E3B77D600A02D78 /* XCTestObservation-Protocol.h in Headers */,
 				EE35AD131E3B77D600A02D78 /* _XCTNSPredicateExpectationImplementation.h in Headers */,
 				71B49EC71ED1A58100D51AD6 /* XCUIElement+FBUID.h in Headers */,
+				1C9931AE28F8AAAB00A4FC83 /* XCElementSnapshot.h in Headers */,
 				EE35AD381E3B77D600A02D78 /* XCSymbolicationRecord.h in Headers */,
 				EE35AD6E1E3B77D600A02D78 /* XCUIDevice.h in Headers */,
 				71BD20731F86116100B36EC2 /* XCUIApplication+FBTouchAction.h in Headers */,
@@ -2291,6 +2317,7 @@
 				EE9B76AA1CF7A43900275851 /* FBMacros.h in Headers */,
 				C8FB547922D4C1FC00B69954 /* FBUnattachedAppLauncher.h in Headers */,
 				719DCF152601EAFB000E765F /* FBNotificationsHelper.h in Headers */,
+				1C9931D028F9C48400A4FC83 /* XCAccessibilityElement.h in Headers */,
 				1C99319028F87CD900A4FC83 /* XCUIDevice+CFHelpers.h in Headers */,
 				EE35AD4A1E3B77D600A02D78 /* XCTestExpectationDelegate-Protocol.h in Headers */,
 				71F3E7D425417FF400E0C22B /* FBSettings.h in Headers */,
@@ -2708,6 +2735,7 @@
 				641EE5E62240C5CA00173FCB /* FBElementUtils.m in Sources */,
 				641EE5E72240C5CA00173FCB /* FBW3CActionsSynthesizer.m in Sources */,
 				641EE5E92240C5CA00173FCB /* FBFailureProofTestCase.m in Sources */,
+				1C9931CC28F8C7BD00A4FC83 /* ujsonin.c in Sources */,
 				641EE5EA2240C5CA00173FCB /* XCUIElement+FBIsVisible.m in Sources */,
 				71F5BE52252F14EB00EE9EBA /* FBExceptions.m in Sources */,
 				641EE5EB2240C5CA00173FCB /* XCUIElement+FBFind.m in Sources */,
@@ -2722,6 +2750,8 @@
 				641EE5F42240C5CA00173FCB /* XCUIDevice+FBRotation.m in Sources */,
 				13815F722328D20400CDAB61 /* FBActiveAppDetectionPoint.m in Sources */,
 				71D475C52538F5A8008D9401 /* XCUIApplicationProcess+FBQuiescence.m in Sources */,
+				1C9931CE28F8C7BD00A4FC83 /* red_black_tree.c in Sources */,
+				1C9931CA28F8C7BD00A4FC83 /* string-tree.c in Sources */,
 				641EE5F52240C5CA00173FCB /* XCUIElement+FBUID.m in Sources */,
 				641EE5F82240C5CA00173FCB /* FBXCTestCaseImplementationFailureHoldingProxy.m in Sources */,
 				641EE5FA2240C5CA00173FCB /* XCUIDevice+FBHealthCheck.m in Sources */,
@@ -2807,6 +2837,7 @@
 				1C99319F28F87DAD00A4FC83 /* NNGServer.m in Sources */,
 				C8FB547A22D4C1FC00B69954 /* FBUnattachedAppLauncher.m in Sources */,
 				EE0D1F621EBCDCF7006A3123 /* NSString+FBVisualLength.m in Sources */,
+				1C9931CB28F8C7BD00A4FC83 /* ujsonin.c in Sources */,
 				EEE9B4731CD02B88009D2030 /* FBRunLoopSpinner.m in Sources */,
 				719CD8F92126C78F00C7D0C2 /* FBAlertsMonitor.m in Sources */,
 				71A7EAFA1E224648001DA4F2 /* FBClassChainQueryParser.m in Sources */,
@@ -2821,6 +2852,8 @@
 				714D88CE2733FB970074A925 /* FBXMLGenerationOptions.m in Sources */,
 				7140974E1FAE20EE008FB2C5 /* FBBaseActionsSynthesizer.m in Sources */,
 				EEE3764A1D59FAE900ED88DD /* XCUIElement+FBWebDriverAttributes.m in Sources */,
+				1C9931CD28F8C7BD00A4FC83 /* red_black_tree.c in Sources */,
+				1C9931C928F8C7BD00A4FC83 /* string-tree.c in Sources */,
 				EE8DDD7E20C5733C004D4925 /* XCUIElement+FBForceTouch.m in Sources */,
 				1C99319B28F87DAD00A4FC83 /* NNGServer2.m in Sources */,
 				63CCF91321ECE4C700E94ABD /* FBImageIOScaler.m in Sources */,
@@ -2857,7 +2890,6 @@
 				71930C4320662E1F00D3AFEC /* FBPasteboard.m in Sources */,
 				AD6C26951CF2379700F8B5FF /* FBAlert.m in Sources */,
 				13DE7A5D287CA444003243C6 /* FBXCElementSnapshotWrapper+Helpers.m in Sources */,
-				13DE7A4B287C4005003243C6 /* FBXCDeviceEvent.m in Sources */,
 				EE5A24421F136D360078B1D9 /* FBXCodeCompatibility.m in Sources */,
 				EE158AE91CBD456F00A3E3F0 /* FBElementTypeTransformer.m in Sources */,
 				71D3B3D7267FC7260076473D /* XCUIElement+FBResolve.m in Sources */,
@@ -3486,9 +3518,11 @@
 			baseConfigurationReference = EEE5CABF1C80361500CBBDD9 /* IOSSettings.xcconfig */;
 			buildSettings = {
 				CLANG_STATIC_ANALYZER_MODE = deep;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = NO;
+				DEVELOPMENT_TEAM = SN347Q39P2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -3549,8 +3583,10 @@
 			baseConfigurationReference = EEE5CABF1C80361500CBBDD9 /* IOSSettings.xcconfig */;
 			buildSettings = {
 				CLANG_STATIC_ANALYZER_MODE = deep;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = NO;
+				DEVELOPMENT_TEAM = SN347Q39P2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -3613,6 +3649,7 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = SN347Q39P2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = WebDriverAgentTests/IntegrationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3631,6 +3668,7 @@
 			baseConfigurationReference = 71649EC82518C19C0087F212 /* IOSTestSettings.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
+				DEVELOPMENT_TEAM = SN347Q39P2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = WebDriverAgentTests/IntegrationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3651,6 +3689,7 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = SN347Q39P2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = WebDriverAgentTests/IntegrationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3669,6 +3708,7 @@
 			baseConfigurationReference = 71649EC82518C19C0087F212 /* IOSTestSettings.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
+				DEVELOPMENT_TEAM = SN347Q39P2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = WebDriverAgentTests/IntegrationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3688,6 +3728,7 @@
 			baseConfigurationReference = 71649EC82518C19C0087F212 /* IOSTestSettings.xcconfig */;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = SN347Q39P2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = WebDriverAgentTests/UnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3704,6 +3745,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71649EC82518C19C0087F212 /* IOSTestSettings.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = SN347Q39P2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = WebDriverAgentTests/UnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3724,6 +3766,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = SN347Q39P2;
 				INFOPLIST_FILE = WebDriverAgentTests/IntegrationApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3740,6 +3783,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
+				DEVELOPMENT_TEAM = SN347Q39P2;
 				INFOPLIST_FILE = WebDriverAgentTests/IntegrationApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3757,6 +3801,7 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = SN347Q39P2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = WebDriverAgentTests/IntegrationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3775,6 +3820,7 @@
 			baseConfigurationReference = 71649EC82518C19C0087F212 /* IOSTestSettings.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
+				DEVELOPMENT_TEAM = SN347Q39P2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = WebDriverAgentTests/IntegrationTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

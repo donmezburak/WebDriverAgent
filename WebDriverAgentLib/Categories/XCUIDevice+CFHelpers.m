@@ -6,7 +6,7 @@
 
 #import <Foundation/Foundation.h>
 #import "XCUIDevice.h"
-#import "XCDeviceEvent.h"
+#import "FBXCDeviceEvent.h"
 #import "XCUIDevice+CFHelpers.h"
 #import "XCPointerEventPath.h"
 #import "XCSynthesizedEventRecord.h"
@@ -114,12 +114,15 @@
                             duration:(NSTimeInterval)duration
                                error:(NSError **)error
 {
-  XCDeviceEvent *event = [XCDeviceEvent
+  
+  //ROBOTQA
+  /*XCDeviceEvent *event = [XCDeviceEvent
                           deviceEventWithPage:page
                           usage:usage
                           duration:duration];
   event.type = type;
-  return [self performDeviceEvent:event error:error];
+  return [self performDeviceEvent:event error:error]; */
+  return nil;
 }
 
 @end

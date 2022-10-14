@@ -93,6 +93,7 @@ typedef NS_ENUM(NSUInteger, FBUIInterfaceAppearance) {
  @return YES if the button has been pressed
  */
 - (BOOL)fb_pressButton:(NSString *)buttonName forDuration:(nullable NSNumber *)duration error:(NSError **)error;
+- (BOOL)fb_pressButton:(NSString *)buttonName error:(NSError **)error;
 
 
 /**

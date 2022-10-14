@@ -20,12 +20,11 @@
 #import "XCUIApplication+FBHelpers.h"
 #import "XCUIDevice+FBHelpers.h"
 #import "XCUIApplication+FBTouchAction.h"
-#import "FBXCAXClientProxy.h"
 #import <objc/runtime.h>
 #import "XCTestPrivateSymbols.h"
 #import "FBXCodeCompatibility.h"
 #import "XCUIElementQuery.h"
-
+#import "FBXCAXClientProxy.h"
 //#import <AXRuntime/AXUIElement.h>
 
 @implementation NngThread
@@ -868,7 +867,7 @@ XCUIElementQuery *appElsTouchBar( XCUIApplication *app ) { return app.touchBars;
                     //XCUIElement *el = [FBXCAXClientProxy.sharedClient elementAtPoint:x y:y];
                     //XCUIApplication *app = [el application];
                     CGPoint point = CGPointMake(x,y);
-                    XCAccessibilityElement *el = [app cf_requestElementAtPoint:point];
+                    XCUIElement *el = [app cf_requestElementAtPoint:point];
                     
                     //AXUIElement *el2 = [AXUIElement uiElementWithAXElement:el.AXUIElement];
                     
@@ -889,7 +888,7 @@ XCUIElementQuery *appElsTouchBar( XCUIApplication *app ) { return app.touchBars;
                         snap = snap.rootElement;
                     }
                     
-                    int pid = el.processIdentifier;
+                    int pid = el.identifier;
                                         
                     /*char str[200];
                     sprintf( str, "pid:%d", pid );
@@ -937,7 +936,7 @@ XCUIElementQuery *appElsTouchBar( XCUIApplication *app ) { return app.touchBars;
                     //[XCUIApplicationProcessDelay disableEventLoopDelay];
                                      
                     char *bundleID = node_hash__get_str( root, "bundleId", 8 );
-                                            
+                
                     int pid = [[FBXCAXClientProxy.sharedClient systemApplication] processIdentifier];
                     systemApp = [FBApplication applicationWithPID:pid];
                     if( strlen(bundleID) ) {
@@ -961,21 +960,24 @@ XCUIElementQuery *appElsTouchBar( XCUIApplication *app ) { return app.touchBars;
                     respTextA = strdup( sid );
                 }
                 else if( !strncmp( action, "activeApps", 10 ) ) {
-                    NSArray<XCAccessibilityElement *> *apps = [FBXCAXClientProxy.sharedClient activeApplications];
+                  //ROBOTQA
+
+                  /*      NSArray<FBXCAccessibilityElement *> *apps = [FBXCAXClientProxy.sharedClient activeApplications];
                     
                     NSMutableString *ids = [[NSMutableString alloc] init];
                     for( int i=0;i<[apps count];i++ ) {
-                        XCAccessibilityElement *app = [apps objectAtIndex:i];
+                      FBXCAccessibilityElement *app = [apps objectAtIndex:i];
                         int pid = app.processIdentifier;
                         [ids appendFormat:@"%d,", pid ];
                     }
                     const char *idsC = [ids UTF8String];
-                    respTextA = strdup( idsC );
+                    respTextA = strdup( idsC ); */
                 }
                 else if( !strncmp( action, "elByPid", 7 ) ) {
                     int pid = node_hash__get_int( root, "pid", 3 );
                     int json = node_hash__get_int( root, "json", 4 );
-                    XCAccessibilityElement *el = [XCAccessibilityElement elementWithProcessIdentifier:pid];
+                  //ROBOTQA
+                  /*  FBXCAccessibilityElement *el = [FBXCAccessibilityElement elementWithProcessIdentifier:pid];
                     
                     NSArray *standardAttributes = FBStandardAttributeNames();
                   
@@ -992,7 +994,7 @@ XCUIElementQuery *appElsTouchBar( XCUIApplication *app ) { return app.touchBars;
                         
                         [self dictToStr:sdict str:str depth: 0];
                     }
-                    respTextA = strdup( [str UTF8String] );
+                    respTextA = strdup( [str UTF8String] ); */
                 }
                 else if( !strncmp( action, "pidChildWithWidth", 17 ) ) {
                     int pid = node_hash__get_int( root, "pid", 3 );
@@ -1000,7 +1002,8 @@ XCUIElementQuery *appElsTouchBar( XCUIApplication *app ) { return app.touchBars;
                   
                     //XCUIApplication *app = [XCUIApplication applicationWithPID:0];
                     //FBApplication *app = [FBApplication fb_applicationWithPID:pid];
-                    XCAccessibilityElement *el = [XCAccessibilityElement elementWithProcessIdentifier:pid];
+                 //ROBOTQA
+                  /* FBXCAccessibilityElement *el = [FBXCAccessibilityElement elementWithProcessIdentifier:pid];
                     
                     NSArray *standardAttributes = FBStandardAttributeNames();
                   
@@ -1033,7 +1036,7 @@ XCUIElementQuery *appElsTouchBar( XCUIApplication *app ) { return app.touchBars;
                         respTextA = strdup( [key UTF8String] );
                     } else {
                         respText = "could not find";
-                    }
+                    } */
                 }
             }
             else NSLog(@"xxr empty message");

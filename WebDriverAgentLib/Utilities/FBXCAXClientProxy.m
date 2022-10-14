@@ -97,7 +97,7 @@ static id FBAXClient = nil;
   return [FBAXClient activeApplications];
 }
 
-- (id<FBXCAccessibilityElement>)systemApplication
+- (XCAccessibilityElement *)systemApplication
 {
   return [FBAXClient systemApplication];
 }

@@ -11,7 +11,7 @@
 #import <XCTest/XCTest.h>
 #import "FBElementCache.h"
 
-#import "XCAccessibilityElement.h"
+#import "FBXCAccessibilityElement.h"
 #import "XCElementSnapshot.h"
 
 NS_ASSUME_NONNULL_BEGIN

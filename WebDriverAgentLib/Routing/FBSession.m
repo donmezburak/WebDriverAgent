@@ -34,6 +34,7 @@ NSString *const FBDefaultApplicationAuto = @"auto";
 @property (nonatomic) NSString *testedApplicationBundleId;
 @property (nonatomic) BOOL isTestedApplicationExpectedToRun;
 @property (nonatomic) BOOL shouldAppsWaitForQuiescence;
+@property (nonatomic) NSDictionary<NSString *, FBApplication *> *applications;
 @property (nonatomic, nullable) FBAlertsMonitor *alertsMonitor;
 @property (nonatomic, readwrite) NSMutableDictionary<NSNumber *, NSMutableDictionary<NSString *, NSNumber *> *> *elementsVisibilityCache;
 @end

@@ -9,6 +9,7 @@
 
 #import <XCTest/XCTest.h>
 #import "FBXCElementSnapshot.h"
+#import "XCAccessibilityElement.h"
 
 @protocol FBXCAccessibilityElement;
 
@@ -32,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSArray<id<FBXCAccessibilityElement>> *)activeApplications;
 
-- (id<FBXCAccessibilityElement>)systemApplication;
+- (XCAccessibilityElement *)systemApplication;
 
 - (NSDictionary *)defaultParameters;
 
